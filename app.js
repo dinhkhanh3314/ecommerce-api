@@ -8,6 +8,8 @@ const authRoutes = require("./routes/authRoutes");
 const roleRoutes = require("./routes/roleRoutes");
 const membershipRoutes = require("./routes/membershipRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const orderDetailRoutes = require("./routes/orderDetailRoutes");
 
 app.use(express.json());
 
@@ -22,6 +24,8 @@ app.use("/api/roles", roleRoutes);
 app.use("/api/memberships", membershipRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/order-details", orderDetailRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
