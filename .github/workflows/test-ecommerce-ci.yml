@@ -47,3 +47,15 @@ jobs:
         env:
           DATABASE_URL: postgresql://ecommerce:ecommerce123@localhost:5432/ecommerce?schema=public
         run: npx prisma migrate deploy
+
+      - name: Start API
+        env:
+          PORT: 3000
+          DATABASE_URL: postgresql://ecommerce:ecommerce123@localhost:5432/ecommerce?schema=public
+          JWT_SECRET: ecommerce_secret_key_123456
+        run: node app.js &
+
+      - name: Health Check
+        run: |
+          sleep 5
+          curl --fail http://localhost:3000/api/health
