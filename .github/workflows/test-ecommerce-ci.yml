@@ -43,6 +43,9 @@ jobs:
       - name: Check Prisma
         run: npx prisma validate
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
       - name: Run Prisma migration
         env:
           DATABASE_URL: postgresql://ecommerce:ecommerce123@localhost:5432/ecommerce?schema=public
