@@ -12,5 +12,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  api:
+    image: ecommerce-api
+    container_name: ecommerce-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DATABASE_URL: "postgresql://ecommerce:ecommerce123@postgres:5432/ecommerce?schema=public"
+      JWT_SECRET: "ecommerce_secret_key_123456"
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
